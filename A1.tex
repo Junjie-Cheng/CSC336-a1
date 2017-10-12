@@ -1,0 +1,91 @@
+\documentclass[11pt, answers]{exam}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage{graphics}
+
+\usepackage{afterpage}
+\usepackage{caption}
+
+\usepackage{fancybox}
+
+\usepackage{clrscode3e}
+
+\topmargin0.0cm
+\headheight0.0cm
+\headsep0.0cm
+\oddsidemargin0.0cm
+\textheight23.0cm
+\textwidth16.5cm
+\footskip1.0cm
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture}  
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{CSC336: Assignment 1}
+\author{Junjie Cheng}
+\date{October 12 2017}
+
+\begin{document}
+
+\maketitle
+
+\begin{questions}
+\question %Q1
+\begin{parts}
+\part
+Absolute error$=A-T=2.72 - 2.71828182845905 = 1.72* 10^{-3}$\\
+Relative error$=\frac{A-T}{T} =6.32 * 10^{-4} $
+
+\part
+Absolute error:$=A-T=2.718 - 2.71828182845905 = -2.82 * 10^{-4}$\\
+Relative error:$\frac{A-T}{T} = -1.04 * 10^{-4}$
+
+\part
+Absolute error:$=A-T=2.71828183 - 2.71828182845905=1.54*10^{-9}$\\
+Relative error:$=\frac{A-T}{T} = 5.67*10^{-10}$
+
+\end{parts}
+\question %Q2
+\begin{parts}
+\part
+$4.21*10^0 + 5.47*10^{-2} = 4.2647*10^0$. It will be rounded to $4.26*10^0$
+
+\part
+$6.52*10^1 - 7.27*10^10^{-1} =  6.4473*10^1$. It will be rounded to $6.45 * 10^1$
+
+\part
+$5.61*10^1 + 6.67*10^{-4} = 5.6100667 * 10^1$. It will be rounded to $5.61*10^1$
+
+\part
+$4.52*10^4 - 3.82*10^6 = -3.7748 * 10^6$. It will be rounded to $-3.77*10^6$
+
+\part
+$7.51*10^12 - 5.25*10^5$ will be rounded to $7.51*10^{12}$
+
+\part
+$3.82*10^1 + 8.42*10^2 = 8.803 * 10^2$. It will be rounded to $8.80*10^2$
+
+\part
+$4.47 * 10^{10} * 5.81 * 10^{−15} = 2.59707*10^{-4}$. It will be rounded to $2.60 * 10^{-4}$
+
+\part
+$2.41 * 10^{−10} * 4.81 * 10^{−12} = 1.15921*10^{-21} = 0.115921*10^{-20}$. It will be rounded to $0.12*10^{-20}$, a subnormal floating point.
+
+\part
+$−6.37 * 10^{−10} * 5.28 * 10*{−15} = -3.36336 * 10 ^{-24}$. It will be rounded to 0 because of underflow.
+
+\part
+$−6.27 * 10^{10} / (2.72 * 10^{−15}) = -2.305*10^{25}$. It will be rounded to -Inf because of overflow.
+\end{parts}
+
+\question %Q3
+
+
+\end{questions}
+\end{document}
