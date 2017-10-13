@@ -1,0 +1,200 @@
+Junjie Cheng
+1002770539
+chenjunj
+
+Question 3
+b)
+
+MatLab Program:
+function Question3b(~)
+    function printConditionNumber(x, diff_x)
+        fprintf('Choose x = %f, f(%f) = %f\n', x, x, log(x))
+        fprintf('f(%f) = %f, conditionNumber = %f\n', x-diff_x, log(x-diff_x), cNum(x,x-diff_x))
+        fprintf('f(%f) = %f, conditionNumber = %f\n', x+diff_x, log(x+diff_x), cNum(x,x+diff_x))
+    end
+    
+    function conditionNumber = cNum(x, new_x)
+        relY = log(new_x) / log(x) - 1;
+        relX = new_x / x - 1;
+        conditionNumber = abs(relY/relX);
+    end
+
+    printConditionNumber(0.99990, 0.000005)
+    printConditionNumber(1.00010, 0.000005)
+    printConditionNumber(9.99990, 0.000005)
+    printConditionNumber(10.00010, 0.000005)
+    
+end
+
+Output:
+>> Question3b
+Choose x = 0.999900, f(0.999900) = -0.000100
+f(0.999895) = -0.000105, conditionNumber = 9999.524993
+f(0.999905) = -0.000095, conditionNumber = 9999.474991
+Choose x = 1.000100, f(1.000100) = 0.000100
+f(1.000095) = 0.000095, conditionNumber = 10000.524990
+f(1.000105) = 0.000105, conditionNumber = 10000.474993
+Choose x = 9.999900, f(9.999900) = 2.302575
+f(9.999895) = 2.302575, conditionNumber = 0.434296
+f(9.999905) = 2.302576, conditionNumber = 0.434296
+Choose x = 10.000100, f(10.000100) = 2.302595
+f(10.000095) = 2.302595, conditionNumber = 0.434293
+f(10.000105) = 2.302596, conditionNumber = 0.434292
+
+
+Question 5
+a)
+
+MatLab Program:
+function result = exp1(x)
+    exp_result = 0;
+    new_result = 1;
+    i = 1;
+    while exp_result ~= new_result;
+        exp_result = new_result;
+        new_result = new_result + (power(x, i)/factorial(i));
+        i = i + 1;
+    end
+    result = exp_result;
+end
+
+function Question5a(~)
+	x_array = -25:1:25;
+    for j = x_array(1:end);
+        fprintf('exp(%d)=%f, relative error = %f\n', j, exp1(j), rErr(j))
+    end
+
+    function relativeError = rErr(x)
+        relativeError = (exp1(x) - exp(x))/exp(x);
+    end
+end
+
+Output:
+>> Question5a
+exp(-25)=0.000001, relative error = 58226.187024
+exp(-24)=0.000000, relative error = 9966.350698
+exp(-23)=0.000000, relative error = 66.228996
+exp(-22)=-0.000000, relative error = -115.073655
+exp(-21)=0.000000, relative error = 35.386515
+exp(-20)=0.000000, relative error = 1.024904
+exp(-19)=0.000000, relative error = -0.544198
+exp(-18)=0.000000, relative error = 0.049480
+exp(-17)=0.000000, relative error = 0.001020
+exp(-16)=0.000000, relative error = 0.000285
+exp(-15)=0.000000, relative error = 0.000010
+exp(-14)=0.000001, relative error = -0.000009
+exp(-13)=0.000002, relative error = -0.000001
+exp(-12)=0.000006, relative error = 0.000000
+exp(-11)=0.000017, relative error = 0.000000
+exp(-10)=0.000045, relative error = -0.000000
+exp(-9)=0.000123, relative error = -0.000000
+exp(-8)=0.000335, relative error = -0.000000
+exp(-7)=0.000912, relative error = 0.000000
+exp(-6)=0.002479, relative error = -0.000000
+exp(-5)=0.006738, relative error = 0.000000
+exp(-4)=0.018316, relative error = 0.000000
+exp(-3)=0.049787, relative error = 0.000000
+exp(-2)=0.135335, relative error = 0.000000
+exp(-1)=0.367879, relative error = 0.000000
+exp(0)=1.000000, relative error = 0.000000
+exp(1)=2.718282, relative error = 0.000000
+exp(2)=7.389056, relative error = -0.000000
+exp(3)=20.085537, relative error = -0.000000
+exp(4)=54.598150, relative error = 0.000000
+exp(5)=148.413159, relative error = -0.000000
+exp(6)=403.428793, relative error = 0.000000
+exp(7)=1096.633158, relative error = -0.000000
+exp(8)=2980.957987, relative error = -0.000000
+exp(9)=8103.083928, relative error = 0.000000
+exp(10)=22026.465795, relative error = -0.000000
+exp(11)=59874.141715, relative error = 0.000000
+exp(12)=162754.791419, relative error = -0.000000
+exp(13)=442413.392009, relative error = -0.000000
+exp(14)=1202604.284165, relative error = 0.000000
+exp(15)=3269017.372472, relative error = 0.000000
+exp(16)=8886110.520508, relative error = 0.000000
+exp(17)=24154952.753575, relative error = 0.000000
+exp(18)=65659969.137331, relative error = 0.000000
+exp(19)=178482300.963187, relative error = -0.000000
+exp(20)=485165195.409790, relative error = -0.000000
+exp(21)=1318815734.483214, relative error = -0.000000
+exp(22)=3584912846.131593, relative error = 0.000000
+exp(23)=9744803446.248905, relative error = 0.000000
+exp(24)=26489122129.843472, relative error = 0.000000
+exp(25)=72004899337.385880, relative error = 0.000000
+
+
+c)
+
+MatLab Program:
+function result = exp2(x)
+    if x >= 0;
+        result = exp1(x);
+    else;
+        result = 1/exp(-x);
+end
+
+function Question5c(~)
+    x_array = -25:1:25;
+    for j = x_array(1:end);
+        fprintf('exp(%d)=%f, relative error = %f\n', j, exp2(j), rErr(j))
+    end
+
+    function relativeError = rErr(x)
+        relativeError = (exp2(x) - exp(x))/exp(x);
+    end
+end
+
+Output:
+>> Question5c
+exp(-25)=0.000000, relative error = -0.000000
+exp(-24)=0.000000, relative error = 0.000000
+exp(-23)=0.000000, relative error = 0.000000
+exp(-22)=0.000000, relative error = 0.000000
+exp(-21)=0.000000, relative error = 0.000000
+exp(-20)=0.000000, relative error = 0.000000
+exp(-19)=0.000000, relative error = -0.000000
+exp(-18)=0.000000, relative error = 0.000000
+exp(-17)=0.000000, relative error = 0.000000
+exp(-16)=0.000000, relative error = 0.000000
+exp(-15)=0.000000, relative error = 0.000000
+exp(-14)=0.000001, relative error = 0.000000
+exp(-13)=0.000002, relative error = 0.000000
+exp(-12)=0.000006, relative error = 0.000000
+exp(-11)=0.000017, relative error = 0.000000
+exp(-10)=0.000045, relative error = 0.000000
+exp(-9)=0.000123, relative error = -0.000000
+exp(-8)=0.000335, relative error = 0.000000
+exp(-7)=0.000912, relative error = 0.000000
+exp(-6)=0.002479, relative error = 0.000000
+exp(-5)=0.006738, relative error = 0.000000
+exp(-4)=0.018316, relative error = 0.000000
+exp(-3)=0.049787, relative error = 0.000000
+exp(-2)=0.135335, relative error = 0.000000
+exp(-1)=0.367879, relative error = -0.000000
+exp(0)=1.000000, relative error = 0.000000
+exp(1)=2.718282, relative error = 0.000000
+exp(2)=7.389056, relative error = -0.000000
+exp(3)=20.085537, relative error = -0.000000
+exp(4)=54.598150, relative error = 0.000000
+exp(5)=148.413159, relative error = -0.000000
+exp(6)=403.428793, relative error = 0.000000
+exp(7)=1096.633158, relative error = -0.000000
+exp(8)=2980.957987, relative error = -0.000000
+exp(9)=8103.083928, relative error = 0.000000
+exp(10)=22026.465795, relative error = -0.000000
+exp(11)=59874.141715, relative error = 0.000000
+exp(12)=162754.791419, relative error = -0.000000
+exp(13)=442413.392009, relative error = -0.000000
+exp(14)=1202604.284165, relative error = 0.000000
+exp(15)=3269017.372472, relative error = 0.000000
+exp(16)=8886110.520508, relative error = 0.000000
+exp(17)=24154952.753575, relative error = 0.000000
+exp(18)=65659969.137331, relative error = 0.000000
+exp(19)=178482300.963187, relative error = -0.000000
+exp(20)=485165195.409790, relative error = -0.000000
+exp(21)=1318815734.483214, relative error = -0.000000
+exp(22)=3584912846.131593, relative error = 0.000000
+exp(23)=9744803446.248905, relative error = 0.000000
+exp(24)=26489122129.843472, relative error = 0.000000
+exp(25)=72004899337.385880, relative error = 0.000000
