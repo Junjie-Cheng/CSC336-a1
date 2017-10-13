@@ -116,12 +116,31 @@ In part (a), we calculated that the condition number can (almost) be expressed a
 \part
 $
 \hspace*{0.4cm}
-Relative Error  \\ = \frac{(\frac{1}{1-x} - \frac{1}{1+x}) - (\frac{1}{(1-x)(1+\sigma_1)}(1+\sigma_2) - \frac{1}{(1+x)(1+\sigma_3)(1+\sigma_4)})(1+\sigma_5)}{\frac{1}{1-x} - \frac{1}{1+x}} \\
-  = \frac{\frac{2x(1+\sigma_1)(1+\sigma_3) + (1-x)(1+\sigma_1)(1+\sigma_4)(1+\sigma_5) - (1+\sigma_3)(1+\sigma_2)(1+\sigma_5)}{(1-x^2)(1+\sigma_1)(1+\sigma_3)}}{\frac{2x}{1-x^2}} \\
-  = 1+\frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)+(1\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2} - \frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)-(1+\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2x(1+\sigma_1)(1+\sigma_3)}
+Relative Error  \\
+= \frac{(\frac{1}{1-x} - \frac{1}{1+x}) - (\frac{1}{(1-x)(1+\sigma_1)}(1+\sigma_2) - \frac{1}{(1+x)(1+\sigma_3)(1+\sigma_4)})(1+\sigma_5)}{\frac{1}{1-x} - \frac{1}{1+x}} \\
+= \frac{\frac{2x(1+\sigma_1)(1+\sigma_3) + (1-x)(1+\sigma_1)(1+\sigma_4)(1+\sigma_5) - (1+\sigma_3)(1+\sigma_2)(1+\sigma_5)}{(1-x^2)(1+\sigma_1)(1+\sigma_3)}}{\frac{2x}{1-x^2}} \\
+= 1+\frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)+(1\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2} - \frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)-(1+\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2x(1+\sigma_1)(1+\sigma_3)}
 $
 
 Note that the relative error is inverse proportional to $x$. That is, when $x$ is extremely small, the absolute value of relative error can be very large.
+
+\part
+We choose $\frac{2x}{(1-x)(1+x)} = \frac{1}{1-x} - \frac{1}{1+x}$. \\
+
+$
+\hspace*{0.4cm}
+Relative Error \\
+= \frac
+{\frac{2x}{(1-x)(1+x)} - \frac{(2x)(1+\sigma_1)}{ (1-x)(1+\sigma_2)(1+x)(1+\sigma_3)}(1+\sigma_4) }
+{\frac{2x}{(1-x)(1+x)}} \\
+= 1 - \frac{ \frac{(2x)(1+\sigma_1)}{(1-x)(1+\sigma_2)(1+x)(1+\sigma_3)}(1+\sigma_4)}{\frac{2x}{(1-x)(1+x)}} \\
+= 1 - \frac{(1+\sigma_1)(1+\sigma_4)}{(1+\sigma_2)(1+\sigma_3)} \\
+= \frac{\sigma_2 + \sigma_3 + \sigma_2 \sigma_3 - \sigma_1 - \sigma_4 - \sigma_1 \sigma_4}{1+\sigma_2+\sigma_3+\sigma_2 \sigma_3}
+$
+Note that $\sigma_i < \epsilon_{machine}$, so in the worst case, we have 
+$$|Relative Error| = \frac {4\epsilon_{machine}+2\epsilon_{machine} ^ 2}{1-2\epsilon_{machine}-\epsilon_{machine}^2} 
+$$
+Since $\epsilon_{machine} << 1$, $|Relative Error| <5\epsilon_{machine}$ in the worst case. So, we can conclude that $\frac{2x}{(1-x)(1+x)}$ has a very small relative error for all values of $x$, provided that there is no overflow or underflow.
 
 \end{parts}
 \question %Q5
@@ -130,7 +149,7 @@ Note that the relative error is inverse proportional to $x$. That is, when $x$ i
 See attachments for code and output.
 
 \part
-For $x > -18$, the function produce very accurate approximations, (when $x=-18$ the approximation is also kind of accruate as the relative error is around only $0.05$).
+For $x > -18$, the function produce very accurate approximations, (when $x=-18$ the approximation is also kind of accurate as the relative error is around only $0.05$).
 
 For $x < -19$, the relative error gets much larger. Of course rounding error contributes at lot on the poor approximations, the main reason that the function performs well on $x>19$ but badly on $x<-19$ is that, $exp(x)$ gets too small for $x < -19$. When denominator gets too small, the whole fraction denoting the relative number gets large. 
 
