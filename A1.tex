@@ -83,9 +83,44 @@ $−6.37 * 10^{−10} * 5.28 * 10*{−15} = -3.36336 * 10 ^{-24}$. It will be ro
 \part
 $−6.27 * 10^{10} / (2.72 * 10^{−15}) = -2.305*10^{25}$. It will be rounded to -Inf because of overflow.
 \end{parts}
-
 \question %Q3
+\begin{parts}
+\part
+Let $\Delta x$ denote the change of input $x$ (i.e. $\Delta x = \hat{x} - x$).
+
+For very small $\Delta x$, we can write $f(\hat{x}) - f(x) = \Delta x f'(x)$
+
+$
+\hspace*{0.4cm}
+Relative Forward Error \\
+= \frac{f(\hat{x}) - f(x)}{f(x)}\\
+= \frac{f(x+\Delta h) - f(x)}{f(x)}
+= \frac{f'(x)(\hat{x} - x)}{f(x)}
+= \frac{xf'(\hat{x})}{f(x)} \times \frac{\hat{x}- x}{x}
+= \frac{1}{\log_e (x)} \times \frac{\hat{x}- x}{x}
+$
+
+When $x$ is close to $1$, the condition number $\frac{1}{\log_e {x}}$ approaches Inf or -Inf, depending on whether $x>1$ or $x<1$. The function is ill-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $1$.
+
+When $x$ is close to $10$, the condition number $\frac{1}{\log_e {x}} \approx \frac{1}{\log_e {10}} \approx 0.4343$. The function is well-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $10$.
+
+\part
+
+\end{parts}
+
+\question %Q4
+\begin{parts}
+\part
+$
+\hspace*{0.4cm}
+Relative Error  \\ = \frac{(\frac{1}{1-x} - \frac{1}{1+x}) - (\frac{1}{(1-x)(1+\sigma_1)}(1+\sigma_2) - \frac{1}{(1+x)(1+\sigma_3)(1+\sigma_4)})(1+\sigma_5)}{\frac{1}{1-x} - \frac{1}{1+x}} \\
+  = \frac{\frac{2x(1+\sigma_1)(1+\sigma_3) + (1-x)(1+\sigma_1)(1+\sigma_4)(1+\sigma_5) - (1+\sigma_3)(1+\sigma_2)(1+\sigma_5)}{(1-x^2)(1+\sigma_1)(1+\sigma_3)}}{\frac{2x}{1-x^2}} \\
+  = 1+\frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)+(1\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2} - \frac{(1+\sigma_2)(1+\sigma_3)(1+\sigma_5)-(1+\sigma_1)(1+\sigma_4)(1+\sigma_5)}{2x(1+\sigma_1)(1+\sigma_3)}
+$
+
+Note that the relative error is inverse proportional to $x$. That is, when $x$ is extremely small, the absolute value of relative error can be very large.
 
 
+\end{parts}
 \end{questions}
 \end{document}
