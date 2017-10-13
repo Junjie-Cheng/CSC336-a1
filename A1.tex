@@ -100,12 +100,14 @@ Relative Forward Error \\
 = \frac{1}{\log_e (x)} \times \frac{\hat{x}- x}{x}
 $
 
-When $x$ is close to $1$, the condition number $\frac{1}{\log_e {x}}$ approaches Inf or -Inf, depending on whether $x>1$ or $x<1$. The function is ill-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $1$.
+When $x$ is close to $1$, the condition number $|\frac{1}{\log_e(x)}|$ approaches Inf. The function is ill-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $1$.
 
-When $x$ is close to $10$, the condition number $\frac{1}{\log_e {x}} \approx \frac{1}{\log_e {10}} \approx 0.4343$. The function is well-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $10$.
+When $x$ is close to $10$, the condition number $|\frac{1}{\log_e(x)}| \approx \frac{1}{\log_e 10} \approx 0.4343$. The function is well-conditioned in a relative sense with respect to small relative changes in the value of the input argument $x$ for $x$ close to $10$.
 
 \part
-See attachments.
+See attachments for code and result.
+
+In part (a), we calculated that the condition number can (almost) be expressed as $|\frac{1}{\log_e (x)}|$. In the computational result of part (b), the condition numbers are very close for the same $x$. Also, the condition numbers are very large when $x=1$ and small when $x = 10$, this also agrees with the calculation we have done in part (a).
 
 \end{parts}
 
@@ -125,13 +127,18 @@ Note that the relative error is inverse proportional to $x$. That is, when $x$ i
 \question %Q5
 \begin{parts}
 \part
-See attachments.
+See attachments for code and output.
 
 \part
+For $x > -18$, the function produce very accurate approximations, (when $x=-18$ the approximation is also kind of accruate as the relative error is around only $0.05$).
+
+For $x < -19$, the relative error gets much larger. Of course rounding error contributes at lot on the poor approximations, the main reason that the function performs well on $x>19$ but badly on $x<-19$ is that, $exp(x)$ gets too small for $x < -19$. When denominator gets too small, the whole fraction denoting the relative number gets large. 
+
+On the other hand, when $|x|$ gets larger, it will require a higher $i$ for $\frac{x^i}{i!}$ to be insignificant so that the accumulated sum stops changing. Much more operations are needed to compute each $\frac{x^i}{i!}$ with a very high $i$, resulting a higher error for $\frac{x^i}{i!}$. This can make the relative error grows even faster for more negative $x$. However, the denominator $exp(x)$ gets too small is the main reason for the poor approximation for $x < -19$.
 
 
 \part
-See attachments.
+See attachments for code and output.
 
 \end{parts}
 \end{questions}
